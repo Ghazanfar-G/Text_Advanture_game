@@ -29,7 +29,8 @@ def startup():
     st.write("Click on start button to start the game.")
     if st.button("💀Start"):
          st.session_state.start_game='Door'
-        #  st.rerun()
+         if st.button("Continue"):
+            st.rerun()
 def Door():
     st.write("You are in a dark room in which 3 doors are shining.")
     door=int(st.number_input("\nEnter the door number where you will go:",min_value=0,format='%d'))
@@ -38,7 +39,8 @@ def Door():
          st.session_state.start_game='Gold_room'
       else:   
          st.session_state.start_game='Monster'
-        #  st.rerun()
+         if st.button("Continue"):
+            st.rerun()
 def Monster():
     st.write("👽You are in the room of monster.")
     choice=st.radio('What will you do( ⚔️fight, 🏃run):', options=['⚔️fight', '🏃run'])
@@ -56,7 +58,8 @@ def Monster():
         else:
             st.success('The monster scared from you and run away. Proceed to Gold room')
             st.session_state.start_game='Gold_room'  
-        # st.rerun()    
+            if st.button("Continue"):
+              st.rerun()    
 def Gold_room():
     st.write("💰Welcome to Gold Room.")
     st.write("In this room you have 5 boxes. 2 are 📦empty, 2 contain 💣bomb and 1 contain 💰gold.")
@@ -80,12 +83,14 @@ def Gold_room():
             if st.session_state.attempts==0:
                 st.error("No attempts left.")
                 st.session_state.start_game='GameOver'   
-        # st.rerun()                       
+            if st.button("Continue"):
+              st.rerun()                       
 def GameOver():
     st.write("Game Over")
     if st.button('🔁Play Again'):
         reset_game()
-        # st.rerun()
+        if st.button("Continue"):
+           st.rerun()
 
 def reset_game():
      st.session_state.start_game='start'

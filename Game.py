@@ -58,7 +58,7 @@ def Monster():
         else:
             st.success('The monster scared from you and run away. Proceed to Gold room')
             st.session_state.start_game='Gold_room'  
-            if st.button("Continue"):
+        if st.button("Continue"):
               st.rerun()    
 def Gold_room():
     st.write("💰Welcome to Gold Room.")
